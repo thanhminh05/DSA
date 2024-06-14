@@ -1,21 +1,19 @@
 #include <iostream>
 using namespace std;
 
-int lastBinarySearch(int a[], int n, int x) {
-  int l = 0, r = n - 1, result = -1;
+bool binarySearch(int a[], int n, int x) {
+  int l = 0, r = n - 1;
   while (l <= r) {
     int m = (l + r) / 2;
     if (a[m] == x) {
-      result = m + 1;
-      l = m + 1;
+      return true;
     } else if (a[m] < x) {
       l = m + 1;
     } else {
       r = m - 1;
     }
   }
-
-  return result;
+  return false;
 }
 
 int main() {
@@ -34,12 +32,12 @@ int main() {
     cin >> x;
   }
 
-  cout << lastBinarySearch(a, n, x);
+  cout << binarySearch(a, n, x);
 
   return 0;
 }
 
 // 5 3
-// 1 2 3 3 3
+// 1 2 3 4 5
 
-// 3
+// 1

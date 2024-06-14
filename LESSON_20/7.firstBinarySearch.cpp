@@ -1,13 +1,13 @@
 #include <iostream>
 using namespace std;
 
-int lastBinarySearch(int a[], int n, int x) {
+int firstBinarySearch(int a[], int n, int x) {
   int l = 0, r = n - 1, result = -1;
   while (l <= r) {
     int m = (l + r) / 2;
     if (a[m] == x) {
       result = m + 1;
-      l = m + 1;
+      r = m - 1;
     } else if (a[m] < x) {
       l = m + 1;
     } else {
@@ -34,7 +34,7 @@ int main() {
     cin >> x;
   }
 
-  cout << lastBinarySearch(a, n, x);
+  cout << firstBinarySearch(a, n, x);
 
   return 0;
 }
