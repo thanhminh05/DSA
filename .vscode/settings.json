@@ -1,4 +1,4 @@
 {
     "editor.formatOnSave": true,
-    "clang-format.executable": "/absolute/path/to/clang-format"
+    "clang-format.executable": "C:/Program Files/LLVM/bin/clang-format"
 }
