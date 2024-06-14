@@ -17,29 +17,25 @@ int main() {
     cin >> x;
   }
 
-  for (int i = 1; i < n; i++) {
-    int key = a[i];
-    int j = i - 1;
-
-    while (j >= 0 && a[j] > key) {
-      a[j + 1] = a[j];
-      j--;
+  for (int i = 0; i < n - 1; i++) {
+    for (int j = i + 1; j < n; j++) {
+      if (a[i] > a[j]) {
+        swap(a[i], a[j]);
+      }
     }
-    a[j + 1] = key;
 
-    cout << "Step " << i << ": ";
+    cout << "Step " << i + 1 << ": ";
     for (int x : a) {
       cout << x << " ";
     }
     cout << endl;
   }
-
   return 0;
 }
 
 // 4
 // 5 7 3 2
 
-// Step 1: 5 7 3 2
-// Step 2: 3 5 7 2
+// Step 1: 2 7 5 3
+// Step 2: 2 3 7 5
 // Step 3: 2 3 5 7
