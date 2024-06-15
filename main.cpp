@@ -15,7 +15,7 @@ int main() {
   int n;
   cin >> n;
   int a[n + 1];
-  fill(a, a + n + 1, 1);
+  fill(a + 2, a + n + 1, 1);
 
   for (int i = 2; i < sqrt(n); i++) {
     if (a[i]) {
