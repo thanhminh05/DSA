@@ -3,6 +3,8 @@
     "clang-format.executable": "C:/Program Files/LLVM/bin/clang-format",
     "files.associations": {
         "iostream": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "cmath": "cpp",
+        "complex": "cpp"
     }
 }
