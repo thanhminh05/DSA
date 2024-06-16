@@ -28,3 +28,7 @@ int main() {
 
   std::cout << is_fibonacci(n);
 }
+
+// 21
+
+// 1
