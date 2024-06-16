@@ -4,6 +4,15 @@
 #define ll long long
 using namespace std;
 
+ll gcd(ll a, ll b) {
+  if (b == 0) {
+    return a;
+  }
+  return gcd(b, a % b);
+}
+
+ll lcm(ll a, ll b) { return (a * b) / gcd(a, b); }
+
 int main() {
   ios_base::sync_with_stdio(false);
   std::cin.tie(NULL);
@@ -13,24 +22,10 @@ int main() {
   freopen("output.txt", "w", stdout);
 #endif
 
-  int n;
-  cin >> n;
+  // 20 30
+  int n, m;
+  cin >> n >> m;
 
-  ll res = n;
-  for (int i = 2; i <= sqrt(n); i++) {
-    if (n % i == 0) {
-      while (n % i == 0) {
-        n = n / i;
-      }
-      res -= res / i;
-    }
-    if (n != 1) {
-      res -= res / n;
-    }
-  }
-  cout << res;
+  cout << gcd(n, m); // 10
+  cout << lcm(n, m); // 60
 }
-
-// 20
-
-// 6

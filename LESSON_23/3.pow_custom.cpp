@@ -4,7 +4,8 @@
 #define ll long long
 using namespace std;
 
-// Exponentiation by Squaring
+// Exponentiation by Squaring. Only using with integer. Faster
+// pow built-in using with any number
 ll pow_custom(ll a, ll b) {
   ll res = 1;
 
