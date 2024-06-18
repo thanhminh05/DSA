@@ -18,8 +18,7 @@ bool case2(string s) {
 
 bool case3(string s) {
   for (char c : s) {
-    int num = c - '0';
-    if (num != 6 && num != 8) {
+    if (c != '6' && c != '8') {
       return false;
     }
   }

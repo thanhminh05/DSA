@@ -4,27 +4,19 @@
 #define ll long long
 using namespace std;
 
-bool case1(string s) { return s[0] == s[1] && s[1] == s[2] && s[3] == s[4]; }
+string solve(string s1, string s2) {
+  set<char> arr1;
+  set<char> arr2;
 
-bool case2(string s) {
-  for (int i = 0; i < 4; i++) {
-    if (s[i] >= s[i + 1]) {
-      return false;
-    }
+  for (char c : s1) {
+    arr1.insert(c);
   }
 
-  return true;
-}
-
-bool case3(string s) {
-  for (char c : s) {
-    int num = c - '0';
-    if (num != 6 && num != 8) {
-      return false;
-    }
+  for (char c : s2) {
+    arr2.insert(c);
   }
 
-  return true;
+  return "";
 }
 
 int main() {
@@ -40,37 +32,13 @@ int main() {
   cin.ignore();
 
   while (tc) {
-    string s;
-    cin >> s;
+    string s1, s2;
+    cin >> s1 >> s2;
 
-    string temp = s.substr(5, 6);
-    temp.erase(3, 1);
-
-    if (case1(temp) || case2(temp) || case3(temp)) {
-      cout << "true" << endl;
-    } else {
-      cout << "false" << endl;
-    }
+    cout << solve(s1, s2) << endl;
 
     tc--;
   }
 
   return 0;
 }
-
-// 7
-// 29T1-123.45
-// 29T1-555.55
-// 29T1-222.33
-// 29T1-686.88
-// 29T1-123.33
-// 29T1-555.54
-// 29T1-606.88
-
-// true
-// true
-// true
-// true
-// false
-// false
-// false
