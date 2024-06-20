@@ -4,7 +4,7 @@
 #define ll long long
 using namespace std;
 
-int n, k, a[101] = {0}, ok;
+int n, a[101] = {0}, ok;
 
 void generateBinaryStrings() {
   int i = n;
@@ -20,14 +20,6 @@ void generateBinaryStrings() {
   }
 }
 
-bool check() {
-  int cnt = 0;
-  for (int i = 1; i <= n; i++) {
-    cnt += a[i];
-  }
-  return cnt == k;
-}
-
 int main() {
   ios_base::sync_with_stdio(false);
   std::cin.tie(NULL);
@@ -36,25 +28,16 @@ int main() {
   freopen("input.txt", "r", stdin);
   freopen("output.txt", "w", stdout);
 #endif
-  cin >> n >> k;
+  cin >> n;
   ok = 1;
 
   while (ok) {
-    if (check()) {
-      for (int i = 1; i <= n; i++) {
-        cout << a[i];
-      }
-      cout << endl;
+    for (int i = 1; i <= n; i++) {
+      cout << a[i]; // print one number in binary from 1 to n
     }
-    generateBinaryStrings();
+    cout << endl;
+    generateBinaryStrings(); // update a to other number
   }
 
   return 0;
 }
-
-// binary number have 2 number is 1
-// 3 2
-
-// 011
-// 101
-// 110
