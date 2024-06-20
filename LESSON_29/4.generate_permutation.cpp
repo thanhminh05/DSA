@@ -7,24 +7,32 @@ using namespace std;
 int n, k, a[101] = {0}, ok;
 
 void init() {
-  for (int i = 1; i <= k; i++) {
+  for (int i = 1; i <= n; i++) {
     a[i] = i;
   }
 }
 
 void generate() {
-  int i = k;
-  while (i >= 1 && a[i] == n - k + i) {
+  int i = n - 1;
+  while (i >= 1 && a[i] > a[i + 1]) {
     --i;
   }
 
   if (i == 0) {
     ok = 0;
   } else {
-    a[i]++;
-    for (int j = i + 1; j <= k; j++) {
-      a[j] = a[j - 1] + 1;
+    int j = n;
+    while (a[i] > a[j]) {
+      --j;
     }
+
+    swap(a[i], a[j]);
+    int l = i + 1, r = n;
+    while (l < r) {
+      swap(a[l], a[r]);
+      ++l, --r;
+    }
+    // reverse(a + i + 1, a + n + 1);
   }
 }
 
@@ -36,12 +44,12 @@ int main() {
   freopen("input.txt", "r", stdin);
   freopen("output.txt", "w", stdout);
 #endif
-  cin >> n >> k;
+  cin >> n;
   ok = 1;
   init();
 
   while (ok) {
-    for (int i = 1; i <= k; i++) {
+    for (int i = 1; i <= n; i++) {
       cout << a[i];
     }
     cout << endl;
@@ -51,17 +59,18 @@ int main() {
   return 0;
 }
 
-// { 1, 2, 3, 4, 5 }
-// generate 5C3 sub-array
-// 5 3
+// 6
 
-// 123
-// 124
-// 125
-// 134
-// 135
-// 145
-// 234
-// 235
-// 245
-// 345
+// 123456
+// 123465
+// 123546
+// 123564
+// 123645
+// 123654
+// 124356
+// 124365
+// 124536
+// 124563
+// 124635
+// 124653
+// 125346
