@@ -6,6 +6,12 @@ using namespace std;
 
 int n, k, a[101] = {0}, ok;
 
+void init() {
+  for (int i = 1; i <= k; i++) {
+    a[i] = i;
+  }
+}
+
 void generateBinaryStrings() {
   int i = n;
   while (i >= 1 && a[i] == 1) {
