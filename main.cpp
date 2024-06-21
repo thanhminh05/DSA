@@ -4,37 +4,27 @@
 #define ll long long
 using namespace std;
 
-int n, a[101], ok, cnt;
-
-void init() {
-  ok = 1;
-  cnt = 1;
-  a[1] = n;
-}
-
-void generate() {
-  int i = cnt;
-  while (i >= 1 && a[i] == 1) {
-    --i;
+void nextSubset(int N, int K, vector<int> &X) {
+  // Convert X to 0-indexed for easier handling in C++
+  for (int i = 0; i < K; ++i) {
+    X[i]--;
   }
 
-  if (i == 0) {
-    ok = 0;
-  } else {
-    a[i]--;
-    int d = cnt - i + 1;
-    cnt = i;
-    int q = d / a[i];
-    int r = d % a[i];
-    if (q) {
-      for (int j = 1; j <= q; j++) {
-        ++cnt;
-        a[cnt] = a[i];
+  // Step backwards to find the first element that can be incremented
+  for (int i = K - 1; i >= 0; --i) {
+    if (X[i] < N - K + i) {
+      // Increment this element
+      X[i]++;
+      // Update the following elements
+      for (int j = i + 1; j < K; ++j) {
+        X[j] = X[j - 1] + 1;
       }
-    }
-    if (r) {
-      ++cnt;
-      a[cnt] = r;
+
+      // Convert back to 1-indexed and print the result
+      for (int i = 0; i < K; ++i) {
+        X[i]++;
+      }
+      return;
     }
   }
 }
@@ -47,16 +37,27 @@ int main() {
   freopen("input.txt", "r", stdin);
   freopen("output.txt", "w", stdout);
 #endif
-  cin >> n;
-  init();
+  int N = 5;
+  int K = 3;
+  vector<int> X = {2, 5, 4};
 
-  while (ok) {
-    for (int i = 1; i <= cnt; ++i) {
-      cout << a[i] << " ";
+  for (int i = 0; i < 100; i++) {
+    for (int j = 0; j < K; ++j) {
+      cout << X[j] << " ";
     }
     cout << endl;
-    generate();
+    nextSubset(N, K, X);
   }
+
+  // Print the next subset
+  for (int i = 0; i < K; ++i) {
+    cout << X[i] << " ";
+  }
+  cout << endl;
 
   return 0;
 }
+
+// 101111
+
+// 110000
