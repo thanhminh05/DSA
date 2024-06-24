@@ -7,7 +7,7 @@ using namespace std;
 int n, k, a[1005];
 
 void next() {
-  int i = 3;
+  int i = k;
   while (i >= 1 && a[i] == n - k + 1) {
     --i;
   }
