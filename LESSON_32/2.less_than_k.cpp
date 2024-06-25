@@ -18,6 +18,14 @@ int main() {
     cin >> a[i];
   }
 
+  int idx = 0;
+  for (int i = 0; i < n; i++) {
+    if (a[i] <= k) {
+      swap(a[i], a[idx]);
+      idx++;
+    }
+  }
+
   for (int i = 0; i < n; i++) {
     cout << a[i] << " ";
   }
@@ -25,8 +33,7 @@ int main() {
   return 0;
 }
 
-// 10 3
-// 1 2 3 1 5 2 7 8 9 1
+// 5 3
+// 2 1 5 6 3
 
-// 24
-// 7 8 9
+// 2 1 3 6 5
